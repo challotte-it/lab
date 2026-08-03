@@ -1,10 +1,10 @@
 # Task Manager Lab
 
-This project is a clean, minimal task management application built as a university software-design lab. The goal was to follow good engineering practices by separating UI, business logic, validation, and persistence into clearly defined layers.
+This project is a clean, minimal task management application.
 
 ## Design goals
 
-- Keep the interface simple, readable, and intentionally structured.
+- Interface is simple, readable, and intentionally structured.
 - Separate presentation from application logic.
 - Use a clear component-based architecture.
 - Demonstrate a maintainable approach to state, validation, and repository access.
