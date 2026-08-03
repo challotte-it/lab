@@ -1,33 +1,33 @@
 # Design Documentation
 
 ## Overview
-The design phase focused on creating a simple task management app with a clean black-and-white interface, clear task states, and a separation between UI, business logic, and data handling.
+This project was designed as a simple, deliberate software-design lab application. The focus was not just to implement task management features, but to demonstrate a clean and maintainable approach to building software.
 
 ## Design Approach
-The app was structured in a way that keeps the user experience simple while still allowing task operations to be easy to maintain.
+The application was structured to be easy to understand, easy to extend, and consistent with common layered architecture principles.
 
 ### 1. UI structure
-- A single page displays the task manager interface.
-- A navigation header introduces the app.
-- A task form allows users to create and edit tasks.
-- Active and archived tasks are shown in separate sections.
-- A small sorting control allows tasks to be ordered by due date or title.
+- A single-page layout presents the task manager clearly.
+- A minimal header introduces the app and its purpose.
+- A task form supports creating and editing entries.
+- Active and archived tasks are separated into distinct sections.
+- Sorting controls allow users to view tasks in a structured way.
 
 ### 2. Component separation
-- Reusable UI elements such as the form, task cards, badges, and sort controls were placed in the components folder.
-- The main page coordinates the state and passes data to the components.
+- Reusable UI elements such as the form, task cards, badges, and sort controls are placed in the components folder.
+- The main page coordinates state and passes data to the components in a controlled way.
 
 ### 3. Business logic separation
-- Validation rules were kept in the lib/inputValidation.ts module.
-- Task operations such as create, edit, complete, and archive were implemented in lib/taskService.ts.
-- Repository functions for storing and retrieving tasks were separated into lib/taskRepository.ts.
+- Validation rules are kept in the input validation module.
+- Task operations such as create, edit, complete, and archive are handled in the service layer.
+- Persistence and data access are isolated in the repository layer.
 
 ### 4. Data model
 - Each task contains a title, topic, description, due date, completion state, and archive state.
-- Tasks are grouped into active and archived lists.
 - Task states are derived from due date and completion status.
+- The structure reflects a clear domain model rather than ad-hoc UI state.
 
 ### 5. Design decisions
-- The interface uses a minimal black-and-white theme to keep the layout clear and readable.
-- The app avoids unnecessary complexity so the core workflow is easy to understand.
-- The design supports future growth, such as adding restore, filtering, or search features.
+- The interface uses a minimal black-and-white theme for clarity and readability.
+- The app avoids unnecessary complexity so the core workflow is easy to follow.
+- The implementation emphasizes maintainability, separation of concerns, and a clean software-design mindset.
