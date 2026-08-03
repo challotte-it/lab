@@ -1,8 +1,5 @@
 # Design Documentation
 
-## Overview
-This project was designed as a simple, deliberate software-design lab application. The focus was not just to implement task management features, but to demonstrate a clean and maintainable approach to building software.
-
 ## Design Approach
 The application was structured to be easy to understand, easy to extend, and consistent with common layered architecture principles.
 
