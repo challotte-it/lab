@@ -7,6 +7,7 @@ import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
 import { archiveTask, completeTask, createTask, editTask } from '../lib/taskService';
 import { getAllTasks } from '../lib/taskRepository';
+import { sortTasks, type SortOption, type StatusFilter } from '../lib/taskSorting';
 import type { Task, TaskDraft } from '../types/task';
 
 const initialDraft: TaskDraft = {
@@ -20,7 +21,8 @@ export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [draft, setDraft] = useState<TaskDraft>(initialDraft);
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
-  const [sortBy, setSortBy] = useState<'dueDate' | 'title'>('dueDate');
+  const [sortBy, setSortBy] = useState<SortOption>('dueDate');
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
 
   const refreshTasks = () => {
     setTasks(getAllTasks());
@@ -31,14 +33,8 @@ export default function Home() {
   }, []);
 
   const sortedTasks = useMemo(() => {
-    return [...tasks].sort((firstTask, secondTask) => {
-      if (sortBy === 'title') {
-        return firstTask.title.localeCompare(secondTask.title);
-      }
-
-      return new Date(firstTask.dueDate).getTime() - new Date(secondTask.dueDate).getTime();
-    });
-  }, [sortBy, tasks]);
+    return sortTasks(tasks, sortBy, statusFilter);
+  }, [sortBy, statusFilter, tasks]);
 
   const activeTasks = sortedTasks.filter((task) => !task.isArchived);
   const archivedTasks = sortedTasks.filter((task) => Boolean(task.isArchived));
@@ -104,7 +100,7 @@ export default function Home() {
 
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <section className="space-y-4">
-            <SortControls sortBy={sortBy} onChange={setSortBy} />
+            <SortControls sortBy={sortBy} statusFilter={statusFilter} onChange={setSortBy} onStatusChange={setStatusFilter} />
             <TaskList title="Active tasks" tasks={activeTasks} onEdit={handleEdit} onComplete={handleComplete} onArchive={handleArchive} />
             <TaskList title="Archived tasks" tasks={archivedTasks} onEdit={handleEdit} onComplete={handleComplete} onArchive={handleArchive} />
           </section>
