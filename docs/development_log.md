@@ -36,3 +36,32 @@ The following steps were taken to resolve the issue using Copilot Chat:
 - If this happens again, check Windows Credential Manager for outdated or incorrect GitHub credentials.
 - Ensure the correct GitHub account is selected when prompted for authentication.
 - Keep repository remote URLs and account permissions aligned.
+
+- 
+## Database Design
+- Designed the database using the `Tasks` and `TaskHistory` tables.
+- Chose to store task lifecycle events in `TaskHistory` instead of storing multiple status fields in the `Tasks` table.
+
+---
+
+## Business Logic
+- Defined the business rules for task states.
+- Separated the application into validation, business logic, and database layers.
+
+---
+
+## Testing
+- Selected Vitest as the testing framework.
+- Planned unit tests before implementation following a top-down development approach.
+
+---
+
+## Bug Fix: Task Status Filtering
+During development, the task filtering feature did not correctly display **Todo** and **Completed** tasks.
+
+To avoid affecting the main branch, a separate feature branch called "status_filter_bug" was created to isolate, investigate, and resolve the issue before merging the fix.
+
+---
+
+## Documentation
+- I docu
