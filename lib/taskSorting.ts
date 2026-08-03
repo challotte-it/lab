@@ -23,14 +23,16 @@ function getStatusLabel(task: Task): string {
   }
 }
 
-export function sortTasks(tasks: Task[], sortBy: SortOption, statusFilter: StatusFilter = 'all') {
-  const filteredTasks = tasks.filter((task) => {
-    if (statusFilter === 'all') {
-      return true;
-    }
+export function matchesStatusFilter(task: Task, statusFilter: StatusFilter): boolean {
+  if (statusFilter === 'all') {
+    return true;
+  }
 
-    return getStatusLabel(task) === statusFilter;
-  });
+  return getStatusLabel(task) === statusFilter;
+}
+
+export function sortTasks(tasks: Task[], sortBy: SortOption, statusFilter: StatusFilter = 'all') {
+  const filteredTasks = tasks.filter((task) => matchesStatusFilter(task, statusFilter));
 
   return filteredTasks.sort((firstTask, secondTask) => {
     if (sortBy === 'title') {

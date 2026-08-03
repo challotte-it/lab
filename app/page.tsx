@@ -7,7 +7,7 @@ import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
 import { archiveTask, completeTask, createTask, editTask } from '../lib/taskService';
 import { getAllTasks } from '../lib/taskRepository';
-import { sortTasks, type SortOption, type StatusFilter } from '../lib/taskSorting';
+import { matchesStatusFilter, sortTasks, type SortOption, type StatusFilter } from '../lib/taskSorting';
 import type { Task, TaskDraft } from '../types/task';
 
 const initialDraft: TaskDraft = {
@@ -36,8 +36,8 @@ export default function Home() {
     return sortTasks(tasks, sortBy, statusFilter);
   }, [sortBy, statusFilter, tasks]);
 
-  const activeTasks = sortedTasks.filter((task) => !task.isArchived);
-  const archivedTasks = sortedTasks.filter((task) => Boolean(task.isArchived));
+  const activeTasks = sortedTasks.filter((task) => !task.isArchived && matchesStatusFilter(task, statusFilter));
+  const archivedTasks = sortedTasks.filter((task) => Boolean(task.isArchived) && matchesStatusFilter(task, statusFilter));
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();

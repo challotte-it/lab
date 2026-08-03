@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { sortTasks, type StatusFilter, type SortOption } from '../lib/taskSorting';
+import { matchesStatusFilter, sortTasks, type StatusFilter, type SortOption } from '../lib/taskSorting';
 import type { Task } from '../types/task';
 
 function createTask(overrides: Partial<Task> = {}): Task {
@@ -15,6 +15,17 @@ function createTask(overrides: Partial<Task> = {}): Task {
 }
 
 describe('task sorting', () => {
+  it('matches a task to the selected status filter', () => {
+    const today = new Date();
+    const todoDate = new Date(today);
+    todoDate.setDate(today.getDate() + 1);
+
+    const task = createTask({ title: 'Todo task', dueDate: todoDate });
+
+    expect(matchesStatusFilter(task, 'todo' as StatusFilter)).toBe(true);
+    expect(matchesStatusFilter(task, 'in-progress' as StatusFilter)).toBe(false);
+  });
+
   it('places matching status tasks first when a status filter is selected', () => {
     const today = new Date();
     const todoDate = new Date(today);
