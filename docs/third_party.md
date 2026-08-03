@@ -1,9 +1,20 @@
 # Third-Party Documentation
 
 ## Overview
-This document lists third-party tools and services used in the project.
+This document lists the main third-party tools, libraries, and services used in the project.
+
+## Tools and Libraries
+- Next.js: used as the React framework for building the app and serving the pages.
+- React: used to build the user interface and manage component state.
+- TypeScript: used to add static typing and make the logic easier to maintain.
+- Tailwind CSS: used for the simple black-and-white styling and layout system.
+- Vitest: used for testing the validation logic, service layer, and repository behavior.
+- ESLint: used to keep the codebase consistent and catch common issues.
+
+## Development Environment
+- Visual Studio Code was used as the main editor for implementation and debugging.
+- GitHub was used for version control and project tracking.
+- Git Bash was used to run local development commands in the Windows environment.
 
 ## Notes
-- GitHub is used for version control and repository hosting.
-- Visual Studio Code is used as the development environment.
-- Next.js is used as the application framework.
+These tools were chosen to keep the app lightweight, modern, and easy to build while still supporting testing and maintainability.
