@@ -26,6 +26,15 @@ describe('task sorting', () => {
     expect(matchesStatusFilter(task, 'in-progress' as StatusFilter)).toBe(false);
   });
 
+  it('includes overdue tasks when the in-progress filter is selected', () => {
+    const overdueDate = new Date();
+    overdueDate.setDate(overdueDate.getDate() - 1);
+
+    const overdueTask = createTask({ title: 'Overdue task', dueDate: overdueDate });
+
+    expect(matchesStatusFilter(overdueTask, 'in-progress' as StatusFilter)).toBe(true);
+  });
+
   it('places matching status tasks first when a status filter is selected', () => {
     const today = new Date();
     const todoDate = new Date(today);

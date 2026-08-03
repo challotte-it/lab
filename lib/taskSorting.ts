@@ -18,6 +18,8 @@ function getStatusLabel(task: Task): string {
       return 'complete';
     case TaskState.TODO:
       return 'todo';
+    case TaskState.OVERDUE:
+      return 'in-progress';
     default:
       return 'in-progress';
   }
