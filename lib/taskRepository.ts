@@ -1,0 +1,13 @@
+export interface Task {
+  id: number;
+  title: string;
+  description?: string;
+  status: string;
+  createdAt: string;
+}
+
+export const taskRepository = {
+  async getAll(): Promise<Task[]> {
+    return [];
+  },
+};
