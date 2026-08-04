@@ -29,7 +29,7 @@ export default function SortControls({ sortBy, statusFilter, onChange, onStatusC
           <option value="all">All</option>
           <option value="todo">Todo</option>
           <option value="complete">Complete</option>
-          <option value="in-progress">In progress</option>
+          <option value="in-progress">In progress and Overdue</option>
         </select>
       </label>
     </div>

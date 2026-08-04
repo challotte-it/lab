@@ -58,8 +58,8 @@ function persistState(): void {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ tasks, history }));
   } catch {
-    // Ignore persistence errors in non-browser environments.
-  }
+    console.error('Failed to persist state to localStorage, please check your browser settings if it not disabled.');
+ }
 }
 
 loadState();

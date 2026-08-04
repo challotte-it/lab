@@ -1,10 +1,5 @@
 # Testing Documentation
 
-## Overview
-This project uses Vitest for unit and service-level testing. The tests are written to verify the core behavior of the task manager in a simple and readable way.
-
-## How each test file is designed
-
 ### 1. input.validation.test.ts
 This file tests the input validation helpers directly.
 - It verifies that a non-empty title is accepted.

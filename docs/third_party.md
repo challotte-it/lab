@@ -1,8 +1,5 @@
 # Third-Party Documentation
 
-## Overview
-This document lists the main third-party tools, libraries, and services used in the project.
-
 ## Tools and Libraries
 - Next.js: used as the React framework for building the app and serving the pages.
 - React: used to build the user interface and manage component state.
@@ -16,5 +13,3 @@ This document lists the main third-party tools, libraries, and services used in 
 - GitHub was used for version control and project tracking.
 - Git Bash was used to run local development commands in the Windows environment.
 
-## Notes
-These tools were chosen to keep the app lightweight, modern, and easy to build while still supporting testing and maintainability.
